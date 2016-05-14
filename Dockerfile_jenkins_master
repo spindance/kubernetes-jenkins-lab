@@ -1,0 +1,5 @@
+FROM jenkins
+USER root
+RUN chmod -R 777 /var/jenkins_home
+RUN wget https://storage.googleapis.com/kubernetes-release/release/v0.19.3/bin/linux/amd64/kubectl && chmod +x kubectl && mv kubectl /usr/local/bin/
+USER jenkins
