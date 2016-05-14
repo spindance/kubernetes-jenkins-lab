@@ -1,0 +1,25 @@
+ #!/bin/bash
+ echo "Passed in PROJECT_ID:" $PROJECT_ID
+ echo "Passed in VERSION:" $VERSION
+
+JENKINS_MASTER_TAG="gcr.io/$PROJECT_ID/jenkins-master:$VERSION"
+NODEJS_BUILDER_TAG="gcr.io/$PROJECT_ID/nodejs-slave:4.4.4"
+RUBY_BUILDER_TAG="gcr.io/$PROJECT_ID/ruby-slave:2.2.5"
+
+set -x
+#BUILD DOCKER JENKINS MASTER CONTAINER
+docker build -t $JENKINS_MASTER_TAG -f Dockerfile_jenkins_master .
+#PUSH CONTAINTER TO GOOGLE CLOUD REGISTRY
+gcloud docker push $JENKINS_MASTER_TAG
+
+#BUILD DOCKER NODEJS SLAVE CONTAINER
+docker build -t $NODEJS_BUILDER_TAG -f Dockerfile_nodejs_slave .
+#PUSH CONTAINTER TO GOOGLE CLOUD REGISTRY
+gcloud docker push $NODEJS_BUILDER_TAG
+
+#BUILD DOCKER RUBY SLAVE CONTAINER
+docker build -t $RUBY_BUILDER_TAG -f Dockerfile_ruby_slave .
+#PUSH CONTAINTER TO GOOGLE CLOUD REGISTRY
+gcloud docker push $RUBY_BUILDER_TAG
+
+echo "ALL IMAGES BUILT READY TO ROLL"
