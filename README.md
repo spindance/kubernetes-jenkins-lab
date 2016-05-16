@@ -6,7 +6,7 @@ We will need a couple of docker containers in order to get our lab working.  In 
 ```
 export PROJECT_ID="google project id"
 export VERSION="Version you want your images to have"
-sh buildImages.sh```
+sh buildImages.sh
 ### Creating Cluster
 Once you have your project setup we will need to create a cluster and a data disk.
 
