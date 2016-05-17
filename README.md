@@ -2,10 +2,11 @@
 In order to be successful with this lab it is recommended that you follow the following tutorial on Kubernetes's site.  http://kubernetes.io/docs/hellonode/ .  Following this guide will ensure that you will be able to follow along during the code lab.
 
 ## Setup
-We will need a couple of docker containers in order to get our lab working.  In this repo you will find a script that will take care of that for you.  In order for this to work you need to have your docker environment working and provide one environment variables.  You can do that by doing the following.
+We will need a couple of docker containers in order to get our lab working.  In this repo you will find a script that will take care of that for you.  In order for this to work you need to have your docker environment working and provide one environment variable.  You can do that by doing the following.
 ```
 export PROJECT_ID="google project id"
 sh buildImages.sh```
+
 ### Creating Cluster
 Once you have your project setup we will need to create a cluster and a data disk.
 
@@ -21,7 +22,7 @@ With the cluster created we will start up our master jenkins server.  We will be
 
 The first time that we start the replication controller the pod will not come up.  The reason for this is that our container doesn't have permissions to the underlying filesystem so we have to change the permissions to the mount on the host machine.  SSH to host machine `chmod 777 “jenkins_home”`
 
-Once you have change permissions on the host, delete the replication controller.
+Once you have changed permissions on the host, delete the replication controller.
 
 ```kubectl delete rc jenkins-master```
 
@@ -41,4 +42,4 @@ In order to find the ip that we will use to interact with Jenkins we will query 
 At this point we have a jenkins instance that we can interact with, all you have to do is open your browser and type in the external ip along with port 8080.  `http://external_ip:8080`
 One thing to note that since the jenkins home directory is stored in a volume if you destroy the jenkins instance that configuration information is still stored on the volume.
 
-For this to work you will have to install one plugin that doesn't come stock and that is the Kubernetes plugin.  
+For this to work you will have to install one jenkins plugin that doesn't come stock and that is the Kubernetes plugin.  https://wiki.jenkins-ci.org/display/JENKINS/Kubernetes+Plugin
