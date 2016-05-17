@@ -2,10 +2,9 @@
 In order to be successful with this lab it is recommended that you follow the following tutorial on Kubernetes's site.  http://kubernetes.io/docs/hellonode/ .  Following this guide will ensure that you will be able to follow along during the code lab.
 
 ## Setup
-We will need a couple of docker containers in order to get our lab working.  In this repo you will find a script that will take care of that for you.  In order for this to work you need to have your docker environment working and provide two environment variables.  You can do that by doing the following.
+We will need a couple of docker containers in order to get our lab working.  In this repo you will find a script that will take care of that for you.  In order for this to work you need to have your docker environment working and provide one environment variables.  You can do that by doing the following.
 ```
 export PROJECT_ID="google project id"
-export VERSION="Version you want your images to have"
 sh buildImages.sh```
 ### Creating Cluster
 Once you have your project setup we will need to create a cluster and a data disk.
