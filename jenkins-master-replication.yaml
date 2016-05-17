@@ -26,8 +26,14 @@ spec:
         - mountPath: /var/jenkins_home
           name: jenkins-home
         ports:
-        - containerPort: 8080
-        - containerPort: 50000
+          - containerPort: 8080
+          - containerPort: 50000
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 60
+          timeoutSeconds: 5
       volumes:
       - name: jenkins-home
         gcePersistentDisk:
