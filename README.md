@@ -4,15 +4,17 @@ In order to be successful with this lab it is recommended that you follow the fo
 ## Setup
 We will need a couple of docker containers in order to get our lab working.  In this repo you will find a script that will take care of that for you.  In order for this to work you need to have your docker environment working and provide one environment variable.  You can do that by doing the following.
 ```
-export PROJECT_ID="google project id"
-sh buildImages.sh```
+export PROJECT_ID='google project id'
+sh buildImages.sh
+```
 
 ### Creating Cluster
 Once you have your project setup we will need to create a cluster and a data disk.
 
 ```
 gcloud container clusters create jenkins-lab
-gcloud compute disks create --size=20GB --zone=us-central1-b jenkins-data-jenkins-lab```
+gcloud compute disks create --size=20GB --zone=us-central1-b jenkins-data-jenkins-lab
+```
 
 ### Creating Jenkins Master
 With the cluster created we will start up our master jenkins server.  We will be using a replication controller in order to do this.  It's worth noting that because we have to use a volume mounted unto our node currently we can only have a replication factor of 1. The only feature we will be using from the replication controller is keeping the pod alive.
