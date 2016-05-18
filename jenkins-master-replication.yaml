@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: master
-        image: gcr.io/kubernetes-codelab-1300/jenkins-master:1.0
+        image: gcr.io/kubernetes-codelab-1300/jenkins-master:1.651.1
         resources:
           requests:
             cpu: 100m
