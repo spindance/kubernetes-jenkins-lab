@@ -1,6 +1,16 @@
 # kubernetes-jenkins-lab
 In order to be successful with this lab it is recommended that you follow the following tutorial on Kubernetes's site.  http://kubernetes.io/docs/hellonode/ .  Following this guide will ensure that you will be able to follow along during the code lab.
 
+Short Version
+
+1. Create a google cloud account. Make a note of your Project ID. 
+2. Install Docker.
+  `brew install docker`
+3. Install Google cloud SDK.
+  ```brew cask install google-cloud-sdk```
+4. Install kubernetes client.
+  `gcloud components install kubectl`
+
 ## Setup
 We will need a couple of docker containers in order to get our lab working.  In this repo you will find a script that will take care of that for you.  In order for this to work you need to have your docker environment working and provide one environment variable.  You can do that by doing the following.
 ```
